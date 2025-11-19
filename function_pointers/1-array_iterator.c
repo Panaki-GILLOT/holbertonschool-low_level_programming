@@ -1,10 +1,21 @@
 #include <stddef.h>
 #include "function_pointers.h"
 
-void print_name(char *name, void (*f)(char *))
+/**
+ * array_iterator - executes a function on each element of an array
+ * @array: array of integers
+ * @size: size of the array
+ * @action: function pointer to execute on each element
+ *
+ * Return: Nothing.
+ */
+void array_iterator(int *array, size_t size, void (*action)(int))
 {
-    if (name == NULL || f == NULL)
-        return;
+	size_t i;
 
-    f(name);
+	if (array == NULL || action == NULL)
+		return;
+
+	for (i = 0; i < size; i++)
+		action(array[i]);
 }
