@@ -14,7 +14,6 @@ void print_all(const char * const format, ...)
 	char *sep = "";
 
 	va_start(ap, format);
-
 	while (format && format[i])
 	{
 		switch (format[i])
@@ -23,38 +22,30 @@ void print_all(const char * const format, ...)
 				printf("%s%c", sep, va_arg(ap, int));
 				sep = ", ";
 				break;
-
 			case 'i':
 				printf("%s%d", sep, va_arg(ap, int));
 				sep = ", ";
 				break;
-
 			case 'f':
 				printf("%s%f", sep, va_arg(ap, double));
 				sep = ", ";
 				break;
-
 			case 's':
 				s = va_arg(ap, char *);
-
 				if (!s)
 					s = "(nil)";
-
 				printf("%s%s", sep, s);
 				sep = ", ";
 				break;
-
 			default:
 				break;
 		}
-
 		i++;
-
-		while (0) {}
+		while (0)
+		{}
 	}
-
-	if (sep) {}
-
+	if (sep)
+	{}
 	printf("\n");
 	va_end(ap);
 }
