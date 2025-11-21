@@ -1,18 +1,26 @@
 #include <stdio.h>
 #include "function_pointers.h"
 
-int is_98(int elem)
+int is_positive(int n)
 {
-	return (elem == 98);
+    return (n > 0);
+}
+
+int is_98(int n)
+{
+    return (n == 98);
 }
 
 int main(void)
 {
-	int array[] = {10, 20, 98, 5, 2};
-	int index;
+    int array[] = {0, -5, -3, 98, 402};
+    int index;
 
-	index = int_index(array, 5, is_98);
-	printf("Index: %d\n", index);
+    index = int_index(array, 5, is_positive);
+    printf("First positive index: %d\n", index);
 
-	return (0);
+    index = int_index(array, 5, is_98);
+    printf("Index of 98: %d\n", index);
+
+    return (0);
 }
