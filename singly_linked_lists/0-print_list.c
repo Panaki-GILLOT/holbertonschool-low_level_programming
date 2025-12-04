@@ -1,38 +1,26 @@
-#include "main.h"
+#include <stdio.h>
+#include "lists.h"
 
 /**
- * 0-print_list.c function that prints all the elements of a list_t list.
+ * print_list - prints all the elements of a list_t list
+ * @h: pointer to the head of the list
  *
- *Return: always 0
+ * Return: the number of nodes
  */
- int main(void)
- {
-	list_t *head;
-	list_t *new;
-	list_t hello = {"World", 5, NULL};
-	size_t n;
+size_t print_list(const list_t *h)
+{
+	size_t count = 0;
 
-	head = &hello;
-	new = malloc(sizeof(list_t));
-	if (new == NULL)
+	while (h != NULL)
 	{
-		printf("Error\n");
-		return (1);
+		if (h->str == NULL)
+			printf("[0] (nil)\n");
+		else
+			printf("[%u] %s\n", h->len, h->str);
+
+		h = h->next;
+		count++;
 	}
 
-	str = strdup("Hello");
-	len = 5;
-	next = head;
-	head = new;
-	n = print_list(head);
-	printf("%lu elements\n", n);
-
-	printf("\n");
-	free(str);
-	str = NULL;
-	n = print_list(head);
-	printf("%lu elements\n", n);
-
-	free;
-	return (0);
- }
+	return (count);
+}
