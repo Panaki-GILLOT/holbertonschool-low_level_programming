@@ -28,18 +28,4 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
 void free_dlistint(dlistint_t *head);
 
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
-{
-    unsigned int i = 0;
-
-    while (head != NULL)
-    {
-        if (i == index)
-            return (head);
-        head = head->next;
-        i++;
-    }
-
-    return (NULL);
-}
-
 #endif /* LISTS_H */
