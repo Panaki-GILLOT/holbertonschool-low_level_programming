@@ -15,11 +15,11 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	unsigned int i;
 
 	if (!h)
-		return NULL;
+		return (NULL);
 
 	/* Insert at the beginning */
 	if (idx == 0)
-		return add_dnodeint(h, n); /* Assuming 2-add_dnodeint.c defines add_dnodeint */
+		return (add_dnodeint(h, n)); /* Assuming 2-add_dnodeint.c defines add_dnodeint */
 
 	current = *h;
 	i = 0;
@@ -32,16 +32,16 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	}
 
 	if (!current) /* Index is out of bounds */
-		return NULL;
+		return (NULL);
 
 	/* Insert at the end if current->next is NULL */
 	if (!current->next)
-		return add_dnodeint_end(h, n); /* Assuming 3-add_dnodeint_end.c defines add_dnodeint_end */
+		return (add_dnodeint_end(h, n)); /* Assuming 3-add_dnodeint_end.c defines add_dnodeint_end */
 
 	/* Create new node */
 	new_node = malloc(sizeof(dlistint_t));
 	if (!new_node)
-		return NULL;
+		return (NULL);
 
 	new_node->n = n;
 	new_node->next = current->next;
@@ -50,5 +50,5 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	current->next->prev = new_node;
 	current->next = new_node;
 
-	return new_node;
+	return (new_node);
 }
