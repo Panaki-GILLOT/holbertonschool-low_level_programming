@@ -3,6 +3,8 @@
 /**
 * main - function that prints the alphabet
 *
+* Description: Uses _putchar to print all letters from 'a' to 'z',
+* followed by a new line.
 * Return: void
 */
 
