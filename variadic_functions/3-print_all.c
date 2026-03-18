@@ -3,16 +3,14 @@
 #include <stdio.h>
 
 /**
-* print_all - prints anything based on a format string
-* @format: list of types of arguments passed
-*/
+ * print_all - prints anything based on a format string
+ * @format: list of types of arguments passed
+ */
 void print_all(const char * const format, ...)
 {
 	va_list args;
 	unsigned int i = 0;
-
 	char *str;
-
 	char sep = 0;
 
 	va_start(args, format);
