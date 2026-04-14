@@ -1,7 +1,18 @@
 #include <stdio.h>
 
 /**
- * main - simple calculator with menu loop
+ * clear_input - clears stdin buffer
+ */
+void clear_input(void)
+{
+	int c;
+
+	while ((c = getchar()) != '\n' && c != EOF)
+		;
+}
+
+/**
+ * main - simple calculator with input validation
  *
  * Return: Always 0
  */
@@ -21,58 +32,50 @@ int main(void)
 	while (choice != 0)
 	{
 		printf("Choice: ");
-		scanf("%d", &choice);
+		if (scanf("%d", &choice) != 1)
+		{
+			printf("Invalid choice\n");
+			clear_input();
+			continue;
+		}
 
 		if (choice < 0 || choice > 4)
 		{
 			printf("Invalid choice\n");
 		}
-		else if (choice == 1)
+		else if (choice == 1 || choice == 2 || choice == 3 || choice == 4)
 		{
 			printf("A: ");
-			scanf("%d", &a);
-
-			printf("B: ");
-			scanf("%d", &b);
-
-			printf("Result: %d\n", a + b);
-		}
-		else if (choice == 2)
-		{
-			printf("A: ");
-			scanf("%d", &a);
-
-			printf("B: ");
-			scanf("%d", &b);
-
-			printf("Result: %d\n", a - b);
-		}
-		else if (choice == 3)
-		{
-			printf("A: ");
-			scanf("%d", &a);
-
-			printf("B: ");
-			scanf("%d", &b);
-
-			printf("Result: %d\n", a * b);
-		}
-		else if (choice == 4)
-		{
-			printf("A: ");
-			scanf("%d", &a);
-
-			printf("B: ");
-			scanf("%d", &b);
-
-			if (b == 0)
+			if (scanf("%d", &a) != 1)
 			{
-				printf("Error: division by zero\n");
+				printf("Invalid number\n");
+				clear_input();
+				continue;
 			}
-			else
+
+			printf("B: ");
+			if (scanf("%d", &b) != 1)
 			{
-				result = (float)a / b;
-				printf("Result: %.1f\n", result);
+				printf("Invalid number\n");
+				clear_input();
+				continue;
+			}
+
+			if (choice == 1)
+				printf("Result: %d\n", a + b);
+			else if (choice == 2)
+				printf("Result: %d\n", a - b);
+			else if (choice == 3)
+				printf("Result: %d\n", a * b);
+			else if (choice == 4)
+			{
+				if (b == 0)
+					printf("Error: division by zero\n");
+				else
+				{
+					result = (float)a / b;
+					printf("Result: %.1f\n", result);
+				}
 			}
 		}
 		else if (choice == 0)
