@@ -8,7 +8,8 @@
 int main(void)
 {
 	int choice = -1;
-	int a, b, result;
+	int a, b;
+	float result;
 
 	printf("Simple Calculator\n");
 	printf("1) Add\n");
@@ -34,8 +35,7 @@ int main(void)
 			printf("B: ");
 			scanf("%d", &b);
 
-			result = a + b;
-			printf("Result: %d\n", result);
+			printf("Result: %d\n", a + b);
 		}
 		else if (choice == 2)
 		{
@@ -45,8 +45,7 @@ int main(void)
 			printf("B: ");
 			scanf("%d", &b);
 
-			result = a - b;
-			printf("Result: %d\n", result);
+			printf("Result: %d\n", a - b);
 		}
 		else if (choice == 3)
 		{
@@ -56,8 +55,25 @@ int main(void)
 			printf("B: ");
 			scanf("%d", &b);
 
-			result = a * b;
-			printf("Result: %d\n", result);
+			printf("Result: %d\n", a * b);
+		}
+		else if (choice == 4)
+		{
+			printf("A: ");
+			scanf("%d", &a);
+
+			printf("B: ");
+			scanf("%d", &b);
+
+			if (b == 0)
+			{
+				printf("Error: division by zero\n");
+			}
+			else
+			{
+				result = (float)a / b;
+				printf("Result: %.1f\n", result);
+			}
 		}
 		else if (choice == 0)
 		{
